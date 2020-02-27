@@ -4,7 +4,7 @@ CREATE TABLE senso
  (
 ano INT NOT NULL,
 cod_uf CHAR(2) NOT NULL,
-estado VARCHAR2(50) NOT NULL,
+estado VARCHAR2(500) NOT NULL,
 cod_mun CHAR(7) NOT NULL,
 nome_mun VARCHAR2(50) NOT NULL,
 regiao VARCHAR2(150),
