@@ -100,7 +100,7 @@ DROP DATABASE TESTE;
 -- Excluindo table
 DROP TABLE SALARIO;
 
-
+select * from FUNCIONARIOS
 -- CRIACAO DE VIEW
 CREATE VIEW v_funcionario
 	AS
