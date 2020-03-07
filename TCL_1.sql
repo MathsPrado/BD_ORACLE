@@ -9,9 +9,9 @@ create table cadastro
 	
 
 -- INSERE REGISTROS
-INSERT INTO cadastro VALUES ('Andre','12341244');
-INSERT INTO cadastro VALUES ('Joao','12341248');
-INSERT INTO cadastro VALUES ('Pedro','12341246');
+INSERT INTO cadastro VALUES ('Matheus','2341244');
+INSERT INTO cadastro VALUES ('Prado','12341248');
+INSERT INTO cadastro VALUES ('Lima','12341246');
 
 --VERIFICANDO REGISTROS
 SELECT * FROM cadastro;
@@ -22,5 +22,5 @@ ROLLBACK;
  
 COMMIT;
 
---DELETE FROM cadastro
+  DELETE FROM cadastro
 -- SELECT * FROM CADASTRO
