@@ -9,29 +9,34 @@ select ascii('b') from SYS.DUAL;
 -- Exemplos com LOWER( )
 select a.DEPARTMENT_NAME nome_depto,
       LOWER(a.DEPARTMENT_NAME)nome_depto_l, 
-      LOWER('Curso SQL')
+      LOWER('Curso SQL') select a.DEPARTMENT_NAME nome_depto,  
+       UPPER(a.DEPARTMENT_NAME)nome_depto_U, 
+       UPPER('Curso SQL')
+from HR.DEPARTMENTS a;
+
 from HR.DEPARTMENTS a;
 
 -- Exemplos com UPPER( )
 select a.DEPARTMENT_NAME nome_depto,  
        UPPER(a.DEPARTMENT_NAME)nome_depto_U, 
-       UPPER('Curso SQL')
+       UPPER('Curso SQL') CURSO
 from HR.DEPARTMENTS a;
 
 -- Exemplos com INITCAP( )
+--Coloca a Primeira letra em Maiusculo, foi colocado o UPPER pois o retorno ja éra com o primeia letra em Maiusculo...
 select a.DEPARTMENT_NAME nome_depto, 
          INITCAP(UPPER(a.DEPARTMENT_NAME))nome_depto_i, 
-         INITCAP('curso SQL')
+         INITCAP('curso SQL') CURSO
 from HR.DEPARTMENTS a;
 
 -- Exemplos com CONCAT( )
 
 select a.FIRST_NAME,
        a.LAST_NAME,
-       concat(a.FIRST_NAME,a.LAST_NAME) nome_completo
+       concat(a.FIRST_NAME, a.LAST_NAME) nome_completo
 from HR.EMPLOYEES a;
 
---outra opcao concatenar
+--outra opcao concatenar com space ||
 select a.FIRST_NAME,
        a.LAST_NAME,
        a.FIRST_NAME||' '||a.LAST_NAME as nome_completo,
@@ -39,18 +44,18 @@ select a.FIRST_NAME,
 from HR.EMPLOYEES a;
 
 
--- Exemplos com LPAD( )
+-- Exemplos com LPAD(left pad )
 
 select a.EMPLOYEE_ID,
-       LPAD(a.EMPLOYEE_ID,10,'0')ID_LPAD,
+       LPAD(a.EMPLOYEE_ID,10,'6')ID_LPAD,
        a.FIRST_NAME
 from HR.EMPLOYEES a;
 
 
--- Exemplos com RPAD( )
+-- Exemplos com RPAD(Right Pad )
 
 select a.EMPLOYEE_ID,
-       RPAD(a.EMPLOYEE_ID,10,'0')ID_LPAD,
+       RPAD(a.EMPLOYEE_ID,10,'X')ID_LPAD,
        a.FIRST_NAME
 from HR.EMPLOYEES a;
 -- Exemplos com SUBSTR( )
@@ -58,10 +63,10 @@ from HR.EMPLOYEES a;
 select SUBSTR('ORACLE',2,4) FROM SYS.DUAL;
 
 select a.FIRST_NAME,
+       SUBSTR(a.FIRST_NAME,1,1)INI_1_FIRST_NAME,
        a.LAST_NAME,
-       SUBSTR(a.FIRST_NAME,1,1)INI_1,
-       SUBSTR(a.LAST_NAME,1,1)INI2,
-       CONCAT(SUBSTR(a.FIRST_NAME,1,1),SUBSTR(a.LAST_NAME,1,1)) texto3
+       SUBSTR(a.LAST_NAME,1,1)INI2_LAST_NAME,
+       CONCAT(SUBSTR(a.FIRST_NAME,1,1),SUBSTR(a.LAST_NAME,1,1)) INICIAL_1_2
 from HR.EMPLOYEES a;
 --outro exemplo
 
@@ -72,13 +77,13 @@ from HR.EMPLOYEES a;
 
 -- Exemplos com INSTR( )
 
-SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'r') posicao FROM HR.JOBS a;
+SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'r') posicaoR FROM HR.JOBS a;
 
-SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'es') posicao FROM HR.JOBS a;
+SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'es') posicao_ES FROM HR.JOBS a;
 
-SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'re') posicao FROM HR.JOBS a;
+SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'re') posicao_RE FROM HR.JOBS a;
 
-SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'t',12) posicao FROM HR.JOBS a;
+SELECT a.JOB_TITLE,INSTR(a.JOB_TITLE,'t',12) position_t_comecandoem12,INSTR(a.JOB_TITLE,'t') position_t FROM HR.JOBS a;
 
 -- Exemplos com LTRIM( )
 SELECT a.JOB_TITLE,
@@ -97,12 +102,12 @@ select concat('    Andre',LTRIM('        Andre',' ')) sem_espaco from dual;
 
 
 -- Exemplos com RTRIM( )
-SELECT a.JOB_TITLE,RTRIM(a.JOB_TITLE,'tre') posicao FROM HR.JOBS a;
+SELECT a.JOB_TITLE,RTRIM(a.JOB_TITLE,'t') tirando_T  FROM HR.JOBS a;
 --exemplo
 select 'Andre     ' com_espaco,'Andre'  sem_espaco from dual;
 
 select concat(' Andre       ','Andre') espaco from dual;
-
+--TIRA O ESPAÇO DA DIREIRA RIGHT
 select concat(RTRIM(' Andre       '),'Andre') sem_espaco from dual;
 
 -- Exemplos com LENGTH( )
@@ -111,9 +116,9 @@ SELECT a.JOB_TITLE,
 
 -- Exemplos com TRANSLATE( )
 SELECT a.JOB_TITLE,
-      TRANSLATE(a.JOB_TITLE,'S','X') traducao 
+      TRANSLATE(a.JOB_TITLE,'s','X') traducao 
 FROM HR.JOBS a;
-
+--P=X, A=Y,F=Z
 SELECT a.JOB_TITLE,TRANSLATE(a.JOB_TITLE,'PAF','XYZ') traducao FROM HR.JOBS a;
 
 -- Exemplos com REPLACE( )
@@ -127,7 +132,7 @@ SELECT a.JOB_TITLE  FROM HR.JOBS a;
 
 SELECT a.JOB_TITLE,
        decode(JOB_TITLE,
-                            'President','Presidente',
+                            'President','PRESIDENT',
                             'Administration Vice President','Vice Presiente ADM',
                             'Administration Assistant','Assist Adm',
                             'Finance Manager','Gerente Financ',
@@ -141,7 +146,7 @@ SELECT a.JOB_TITLE,
                             'Stock Manager','Gerente de estoque',
                             'Stock Clerk','Aux Estoque',
                             'Shipping Clerk','Aux de carregamento',
-                            'Programmer','Programador',
+                            'Programmer','MATHEUS PRADO...',
                             'Marketing Manager','Gerente de MKT',
                             'Marketing Representative','Repres de Marketing',
                             'Human Resources Representative','Repres RH',
@@ -156,6 +161,7 @@ FROM HR.JOBS a;
 
 --outras funções
 select (a.FIRST_NAME)nome,
+        --DUMP TYPE,TAMANHO POSITION ASC
         DUMP(a.FIRST_NAME)dump_nome,
         VSIZE(a.FIRST_NAME)size_nome 
         from hr.employees a;
