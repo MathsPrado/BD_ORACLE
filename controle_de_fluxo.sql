@@ -4,9 +4,10 @@ SELECT A.FIRST_NAME,A.SALARY,
 CASE WHEN A.SALARY<5000 THEN 'Baixo'
      WHEN A.SALARY<10000 THEN 'Medio'
       WHEN A.SALARY<15000 THEN 'Medio Alto'
-      ELSE   'Alto' END FAIXA 
+      ELSE 'Alto' END FAIXA 
 FROM HR.EMPLOYEES A
 ORDER BY A.SALARY DESC;
+
 
 SELECT A.FIRST_NAME,A.SALARY,
 CASE WHEN A.SALARY<5000  THEN 'Baixo'
@@ -34,6 +35,18 @@ SELECT A.employee_id,
     on a.manager_id=b.employee_id
     order by a.employee_id;
 
+SELECT A.employee_id,
+       A.FIRST_NAME Colaborador,
+       A.MANAGER_ID,
+       B.FIRST_NAME   
+    FROM HR.EMPLOYEES A
+    left JOIN HR.EMPLOYEES B
+    on a.manager_id=b.employee_id
+    order by a.employee_id;
+
+
+
+select * from HR.employees;
     
 --exemplo case   
 SELECT A.FIRST_NAME,A.MANAGER_ID,
@@ -41,7 +54,7 @@ SELECT A.FIRST_NAME,A.MANAGER_ID,
     FROM HR.EMPLOYEES A;
     
 --exemplo case
-select * from hr.LOCATIONS
+select * from hr.LOCATIONS;
 
 SELECT UNIQUE COUNTRY_ID ID,
        CASE COUNTRY_ID
